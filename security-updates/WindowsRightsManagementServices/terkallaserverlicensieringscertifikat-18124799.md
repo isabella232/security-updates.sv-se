@@ -36,6 +36,7 @@ Om du vill hämta serverlicensieringscertifikatet för en RMS-installation måst
 1.  Öppna frågeanalysatorn i SQL och anslut sedan till rotcertifikatserverns konfigurationsdatabas.
 2.  Klicka på **Results in Text** på **Query**-menyn.
 3.  Klicka på **Options** på **Tools**-menyn och öppna dialogrutan **Options**. Klicka på fliken **Results** och ange **Maximum characters per column** till **8192**.
+4.  Skriv in följande frågesträng i dialogrutan Query:
         
 ```
     select DRMS_XrML_Certificate.s_certificate from DRMS_XrML_Certificate, DRMS_LicensorCertificate, DRMS_ClusterConfiguration where DRMS_ClusterConfiguration.CurrentLicensorCertID = DRMS_LicensorCertificate.i_CertID and DRMS_LicensorCertificate.i_CertificateID = DRMS_XrML_Certificate.i_CertificateID
