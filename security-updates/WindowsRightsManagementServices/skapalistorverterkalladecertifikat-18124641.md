@@ -83,6 +83,8 @@ Mer information om att ange REVOKE-element finns i följande exempel:
 <span id="BKMK_1"></span>
 #### Återkalla enheter baserat på en offentlig nyckel
 
+I det här exemplet återkallas en enhet baserat på den offentliga nyckeln. Innehållet i <PUBLICKEY>-taggen hämtas från noden <BODY><ISSUEDPRINCIPALS><PRINCIPAL><PUBLICKEY> i det certifikat som utfärdade nyckeln.
+
    ```
         <REVOKE category="principal" type="principal-key">
             <PUBLICKEY>
