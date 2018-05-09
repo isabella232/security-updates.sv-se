@@ -15,7 +15,7 @@ Observera att licensieringsservrar kan distribueras i ett kluster, på samma sä
 
 Även om du kan konfigurera Windows RMS-installationen så att endast certifieringstjänsterna körs från rotinstallationen, eller så att hela licensieringstjänsten körs från en eller flera licensieringsservrar eller ett eller flera licensieringskluster, så är inte det den normala konfigurationen. Normalt ökar du antalet servrar i rotcertifikatklustret så att prestanda- och redundanskrav tillgodoses i stället för att distribuera fler licensieringsservrar (såvida du inte konfigurerar stöd för licensiering på avdelningsnivå). Följande diagram illustrerar denna topologi.
 
-![](images/Cc747657.01fa5a85-5711-41aa-932a-124049d34186(WS.10).gif)
+![](images/Cc747657.01fa5a85-5711-41aa-932a-124049d34186(WS.10).gif "Distribuerad topologi")
 
 Om du skapar en distribuerad topologi kan det leda till ökade administrativa kostnader i organisationen eftersom en distribuerad topologi är mer komplex. Om organisationen har flera licensieringskluster och skogar kan du behöva åsidosätta vissa registernycklar på RMS-klientdatorerna så att de begär licensiering från rätt RMS-server. Dessutom kan det uppstå förtroendeproblem mellan domänerna. På grund av det måste du konfigurera domänerna ytterligare för att aktivera användandet av RMS-skyddat innehåll.
 

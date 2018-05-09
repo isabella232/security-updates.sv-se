@@ -11,7 +11,7 @@ Skaffa en användarlicens
 
 Användare måste hämta användarlicenser från RMS-licensieringstjänsten för att kunna använda RMS-skyddat innehåll. I följande illustration beskrivs hur det går till när användare begär och erhåller en användarlicens.
 
-![](images/Cc720194.37b8d28c-9749-4e81-bc6a-22692fefb8b6(WS.10).gif)
+![](images/Cc720194.37b8d28c-9749-4e81-bc6a-22692fefb8b6(WS.10).gif "process för att förvärva en användarlicens")
 
 Begäran om en användarlicens går till på följande sätt:
 

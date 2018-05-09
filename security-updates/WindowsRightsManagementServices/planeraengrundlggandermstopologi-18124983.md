@@ -11,7 +11,7 @@ Planera en grundläggande RMS-topologi
 
 Den grundläggande RMS-topologin utgörs av en eller flera fysiska servrar som fungerar som ett rotcertifikatkluster. Detta kluster används för certifiering, licensiering och publicering i organisationen. För alla distributioner utom de allra minsta konfigureras normalt flera fysiska servrar i ett kluster bakom en enda URL. Klustret skapas genom att den första servern etableras som rotcertifikatserver. Därefter läggs resten av servrarna till i klustret tills du har nått den nivå av rotcertifikatservrar som krävs för att hantera den beräknade aktiviteten. I följande figur illustreras denna topologi.
 
-![](images/Cc747755.a3332719-4d25-4694-a89a-7c31fd97ca3b(WS.10).gif)
+![](images/Cc747755.a3332719-4d25-4694-a89a-7c31fd97ca3b(WS.10).gif "Grundläggande topologi")
 
 När du ansluter servrar till ett kluster delar de samma konfigurations- och loggningsdatabaser, vilka är SQL Server-databaser. SQL Server kan antingen finnas på rotcertifikatservern eller på en separat server.
 
