@@ -17,7 +17,7 @@ I RMS är förtroenderoten, eller ”förtroendeankaret”, ett Microsoft-nyckel
 
 I följande figur framgår förtroendehierarkin i ett företag. Förtroendekedjan går tillbaka till de Microsoft-tjänster som utfärdar bascertifikaten.
 
-![](images/Cc720232.6c169175-94fb-4ec0-93bc-12748aae3ac4(WS.10).gif)
+![](images/Cc720232.6c169175-94fb-4ec0-93bc-12748aae3ac4(WS.10).gif "Förtroendehierarkin")
 1.  Till varje klientdator utfärdas en unik lockbox som innehåller den offentliga Microsoft-rotnyckeln.
 2.  När en licensbegäran tas emot i RMS valideras enheterna genom att sökvägen i förtroendehierarkin följs tillbaka till förtroenderoten.
 3.  RMS kontrollerar äktheten för den betrodda enheten som angetts i licensen.

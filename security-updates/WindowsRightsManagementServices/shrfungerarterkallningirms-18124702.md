@@ -24,7 +24,7 @@ Listor över återkallade certifikat kan distribueras till klientdatorer av admi
 
 I följande figur beskrivs bindningsprocessen och återkallelsefunktionen.
 
-![](images/Cc720263.81aa2d70-d261-49ad-b446-96a2eddba1a5(WS.10).gif)
+![](images/Cc720263.81aa2d70-d261-49ad-b446-96a2eddba1a5(WS.10).gif "bindningsprocessen")
 
 Återkallelse är en valfri funktion. RMS-administratören kan kräva att återkallning ska kunna ske genom att ange det i en eller flera av företagets principmallar för rättigheter. När återkallelse krävs kan en licens inte bindas om inte den krävda återkallelselistan finns, är registrerad på användarens dator och inte har överskridit det sista giltighetsdatum som angetts i användarlicensen.
 

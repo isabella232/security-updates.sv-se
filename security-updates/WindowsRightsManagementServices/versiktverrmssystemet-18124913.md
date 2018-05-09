@@ -93,6 +93,6 @@ RMS använder Microsofts registrerings- och aktiveringstjänster för att tillha
 
 I följande figur beskrivs de olika komponenterna i ett RMS-system och vilken funktion de har i systemet. Pilarna representerar begäran och svar som skickas mellan de olika komponenterna.
 
-![](images/Cc747671.29138741-d45c-459b-8ead-b9bc3f708dd5(WS.10).gif)
+![](images/Cc747671.29138741-d45c-459b-8ead-b9bc3f708dd5(WS.10).gif "Programvarukomponenter i RMS")
 
 Mer information om varje komponent finns i ”[Programvarukomponenter i RMS](https://technet.microsoft.com/e38a840e-f390-48fd-8354-50108a64f5ca)” senare i det här avsnittet.
