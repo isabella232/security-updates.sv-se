@@ -13,9 +13,8 @@ RMS-klienten är inbyggd i operativsystemet Windows Vista®, vilket betyder att
 
 I aktiveringsprocessen etableras en lockbox och ett datorcertifikat för den användare som är inloggad för tillfället. Aktiveringen är en lokal process som inte kräver nätverksanslutning. När aktiveringen har genomförts medför den första begäran om en användarlicens från ett RMS-aktiverat program att användaren får ett användarcertifikat. RMS-klienten kan installeras på varje klientdator i organisationen med hjälp av grupprinciper, Windows Update eller ett administrativt skript.
 
-| ![](images/Cc720266.note(WS.10).gif)Obs!                                                                                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Oavsett vilken metod för klientdistribution som används så använder RMS-klienten en port, som standard antingen port 80 eller port 443, för kommunikation med RMS-servern. Du bör se till att klientdatorn kan skicka utgående begäran till RMS-rotservern och licenskluster på de här portarna. |
+> [!NOTE]  
+> Oavsett vilken metod för klientdistribution som används så använder RMS-klienten en port, som standard antingen port 80 eller port 443, för kommunikation med RMS-servern. Du bör se till att klientdatorn kan skicka utgående begäran till RMS-rotservern och licenskluster på de här portarna.
 
 **Använda grupprinciper**
 
@@ -29,7 +28,13 @@ Det enklaste sättet att installera RMS-klienten på en dator är att använda W
 
 Största möjliga kontroll över klientinstallationsprocessen får du genom att hämta programvaran och sedan validera integriteten i varje steg av installationsprocessen genom att köra ett skript. Skriptet kan skrivas och läggas till i ett grupprincipobjekt (GPO) som ett startskript. Med den här metoden behöver användaren inte vara lokal administratör för datorn och RMS-klienten installeras automatiskt vid omstart.
 
-        ```
+Ett provskript visas nedan:
+
+   ```
+    Set objShell = Wscript.CreateObject("Wscript.Shell")
+    objShell.run "WindowsRightsManagementServicesSP2-KB917275-Client-ENU.exe -override 1 /I MsDrmClient.msi REBOOT=ReallySuppress /q -override 2 /I RmClientBackCompat.msi REBOOT=ReallySuppress /q"
+   ```
+
 Grundläggande information om hur du distribuerar RMS-klienten med hjälp av grupprinciper finns i "[Konfigurera SMS eller grupprinciper för klientdistribution](https://technet.microsoft.com/9e37c27b-8cc1-40c6-adb7-0937aa64c8db)" längre fram i avsnittet.
 
 Instruktioner om RMS-klientdistribution finns i "[Så här distribuerar du RMS-klienten](https://technet.microsoft.com/c84f1724-cf71-4385-9003-ff68bc23c927)" längre fram i avsnittet.
