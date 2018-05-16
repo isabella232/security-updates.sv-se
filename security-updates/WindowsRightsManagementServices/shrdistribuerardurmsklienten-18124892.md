@@ -15,9 +15,8 @@ Många organisationer väljer att kontrollera distributionen av klientprogramvar
 
 Innan du påbörjar distributionen kan du läsa på [http://go.microsoft.com/fwlink/?LinkId=67736](http://go.microsoft.com/fwlink/?linkid=67736) om hämtning av RMS-klienten.
 
-| ![](images/Cc747749.Important(WS.10).gif)Viktigt!                   |
-|--------------------------------------------------------------------------------------------------|
-| RMS-klienten har integrerats i Windows Vista. Därför behövs inte längre en separat installation. |
+> [!IMPORTANT]  
+> RMS-klienten har integrerats i Windows Vista. Därför behövs inte längre en separat installation.
 
 Extrahera installationsfilerna
 ------------------------------
@@ -39,9 +38,8 @@ Om du använder det kommandot extraheras följande filer till den angivna målma
 -   RMClientBackCompat.msi
     Det här är installationsfilen som identifierar den nya RMS med SP2-klienten för RMS-aktiverade program (t.ex. Microsoft Office Professional 2003 eller 2007 Microsoft Office System) som är beroende av den tidigare versionen av RMS-klienten, så att RMS med SP2-klienten kan användas i stället. Det här programmet bör installeras på klientdatorerna när installationen av MSDrmClient.msi är slutförd.
 
-| ![](images/Cc747749.note(WS.10).gif)Obs!                                                                                                                                                             |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Vilken installationsmetod du än väljer ska du se till att båda Windows Installer-filerna installeras utan fel. Om ett fel inträffar som förhindrar installation av MSDrmClient.msi ska du inte installera RMClientBackCompat.msi. |
+> [!NOTE]  
+> Vilken installationsmetod du än väljer ska du se till att båda Windows Installer-filerna installeras utan fel. Om ett fel inträffar som förhindrar installation av MSDrmClient.msi ska du inte installera RMClientBackCompat.msi.
 
 Distribuera RMS-klienten genom en obevakad installation
 -------------------------------------------------------
@@ -52,9 +50,8 @@ Det är valfritt att extrahera filerna för att installera Windows Installer-fil
 
 Kommandot startar den obevakade installationen av RMS-klienten.
 
-| ![](images/Cc747749.note(WS.10).gif)Obs!                                                                                                          |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Eftersom det är en obevakad installation meddelar installationsprogrammet inte att installationen är klar. Obevakade installationer körs vanligen i en batch- eller skriptfil. |
+> [!NOTE]  
+> Eftersom det är en obevakad installation meddelar installationsprogrammet inte att installationen är klar. Obevakade installationer körs vanligen i en batch- eller skriptfil.
 
 Distribuera RMS-klienten med SMS
 --------------------------------
@@ -72,9 +69,8 @@ Distribuera RMS-klienten med SMS
 
     -   Som **Kommandorad** anger du följande:
         `msiexec.exe /q ALLUSERS=2 /m MSIDGHOG /i "<file_name>.msi"`
-        | ![](images/Cc747749.note(WS.10).gif)Obs!                                                                     |
-        |-------------------------------------------------------------------------------------------------------------------------------------------|
-        | MSIDGHOG är ett slumpvis valt värde. Byt ut &lt;filnamn&gt; mot namnet på Windows-installationsfilen som installeras med det här paketet. |
+        > [!NOTE]  
+        > MSIDGHOG är ett slumpvis valt värde. Byt ut &lt;filnamn&gt; mot namnet på Windows-installationsfilen som installeras med det här paketet.
 
     -   Vid **Kör** väljer du alternativet **Dold**.
     -   Vid **Efter körning** väljer du alternativet **Ingen åtgärd krävs**.
@@ -140,14 +136,36 @@ Här följer en snabbguide för administratörer som inte är bekanta med progra
 
 11. Upprepa steg 5 till 10 om du vill skapa ett GPO som används till att installera filen RMClientBackCompat.msi.
 
-| ![](images/Cc747749.note(WS.10).gif)Obs!                                                                                                                                                                                                                                                                                            |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| De här stegen är avsedda för användare som inte är vana att använda grupprinciper. Om du är erfaren grupprincipadministratör kan du gå efter din egen procedur när du distribuerar MSDrmClient.msi-paketet. De här stegen gäller för domänkontrollanter där Windows Server 2003 körs – processen och terminologin kan se annorlunda ut på en Windows 2000-domän. |
+> [!NOTE]  
+> De här stegen är avsedda för användare som inte är vana att använda grupprinciper. Om du är erfaren grupprincipadministratör kan du gå efter din egen procedur när du distribuerar MSDrmClient.msi-paketet. De här stegen gäller för domänkontrollanter där Windows Server 2003 körs – processen och terminologin kan se annorlunda ut på en Windows 2000-domän.
 
 Uppgradera från en tidigare version
 -----------------------------------
 
-        ```
-| ![](images/Cc747749.note(WS.10).gif)Obs!                       |
-|---------------------------------------------------------------------------------------------|
-| Skriptet fungerar inte i Windows Vista eftersom RMS-klienten är inbyggd i operativsystemet. |
+Det går att använda en metod för obevakad installation inom ett skript som upptäcker om RMS med SP2-klienten är installerad. Om klienten inte är installerad uppgraderar skriptet antingen den befintliga klienten eller installerar RMS med SP2-klienten. Skriptet är följande:
+
+   ```
+    Set objShell = Wscript.CreateObject("Wscript.Shell")
+    Set objWindowsInstaller = Wscript.CreateObject("WindowsInstaller.Installer") 
+    Set colProducts = objWindowsInstaller.Products 
+
+    För varje produkt i colProducts 
+    strProductName = objWindowsInstaller.ProductInfo (product, "ProductName")
+
+    if strProductName = "Windows Rights Management Client with Service Pack 2" then
+    strInstallFlag = "False"
+    Exit For
+    else
+    strInstallFlag = "True"
+    end if
+    Next
+
+    if strInstallFlag = "True" then
+    objShell.run "WindowsRightsManagementServicesSP2-KB917275-Client-ENU.exe -override 1 /I MsDrmClient.msi REBOOT=ReallySuppress /q -override 2 /I RmClientBackCompat.msi REBOOT=ReallySuppress /q "
+    else
+    wscript.echo "No installation required"
+    end if
+   ```
+
+> [!NOTE]  
+> Skriptet fungerar inte i Windows Vista eftersom RMS-klienten är inbyggd i operativsystemet.
