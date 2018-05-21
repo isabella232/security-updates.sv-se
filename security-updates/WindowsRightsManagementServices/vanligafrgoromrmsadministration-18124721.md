@@ -86,17 +86,25 @@ Du implementerar spårning genom att ändra någon av filerna Web.config eller M
 **Så här aktiverar du spårning**
 1.  Öppna någon av filerna Machine.config eller Web.config och lägg sedan till följande rader under avsnittet &lt;system.diagnostics&gt; i filen:
 
+    ```
+        <system.diagnostics>
+        <switches>
+        <add name="Microsoft Windows Rights Management Services-Global" value="4" />
+        <add name="Microsoft Windows Rights Management Services-TimeStamps" value="1" /> 
+        <add name="Microsoft Windows Rights Management Services-Indents" value="0" /> 
+        </switches>
+        <trace autoflush="false" indentsize="4"/>
+        </system.diagnostics>
+    ```
     
-        ```
 2.  Starta om IIS genom att köra IISRESET i kommandotolken.
 
 3.  När du har samlat in de data som du behöver tar du bort dessa rader från den aktuella CONFIG-filen.
 
 4.  Starta om IIS genom att köra IISRESET i kommandotolken.
 
-| ![](images/Cc747547.Important(WS.10).gif)Viktigt!                                                                                                                                                                                                                |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| När du använder spårning på en RMS-server kan det påverka serverns prestanda, t.ex. i form av fördröjningar vid hämtning av användarlicenser och utfärdande av rättighetskontocertifikat. Använd bara spårning i de specifika fall då du vill diagnostisera och felsöka fel som har uppstått. |
+> [!IMPORTANT]  
+> När du använder spårning på en RMS-server kan det påverka serverns prestanda, t.ex. i form av fördröjningar vid hämtning av användarlicenser och utfärdande av rättighetskontocertifikat. Använd bara spårning i de specifika fall då du vill diagnostisera och felsöka fel som har uppstått.
 
 <span id="BKMK_9"></span>
 #### Vad är tidsavvikelse och hur ska jag hantera det?

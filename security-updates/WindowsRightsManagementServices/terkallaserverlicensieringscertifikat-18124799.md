@@ -36,7 +36,12 @@ Om du vill hämta serverlicensieringscertifikatet för en RMS-installation måst
 1.  Öppna frågeanalysatorn i SQL och anslut sedan till rotcertifikatserverns konfigurationsdatabas.
 2.  Klicka på **Results in Text** på **Query**-menyn.
 3.  Klicka på **Options** på **Tools**-menyn och öppna dialogrutan **Options**. Klicka på fliken **Results** och ange **Maximum characters per column** till **8192**.
-        ```
+4.  Skriv in följande frågesträng i dialogrutan Query:
+        
+```
+    select DRMS_XrML_Certificate.s_certificate from DRMS_XrML_Certificate, DRMS_LicensorCertificate, DRMS_ClusterConfiguration where DRMS_ClusterConfiguration.CurrentLicensorCertID = DRMS_LicensorCertificate.i_CertID and DRMS_LicensorCertificate.i_CertificateID = DRMS_XrML_Certificate.i_CertificateID
+```
+
 1.  Kopiera resultatet från fönstret **Results** och klistra in det i en textredigerare, t.ex. Anteckningar. Spara resultatet i en fil med filnamnstillägget .xml.
 
 Mer information om hur du använder den här informationen i en lista över återkallade certifikat finns i ”[Skapa listor över återkallade certifikat](https://technet.microsoft.com/1ef75199-3344-4225-84de-a863a777696a)” tidigare i det här avsnittet.
@@ -54,6 +59,5 @@ När rotcertifikatklustrets serverlicensieringscertifikat har återkallats blir 
 
 I båda dessa scenarion - återkallning från Microsoft och återkallning från tredje part - gäller listan över återkallade certifikat för alla begäran om bindning, eftersom den har signerats med en privat nyckel för en enhet i användarlicensens förtroendekedja. Därför kommer alla begäran om bindning från licenser som har utfärdats med den aktuella RMS-installationen med det återkallade serverlicensieringscertifikatet att misslyckas.
 
-| ![](images/Cc747578.note(WS.10).gif)Obs!                                          |
-|----------------------------------------------------------------------------------------------------------------|
-| Microsoft återkallar bara serverlicensieringscertifikat när man åläggs av en behörig myndighet att göra detta. |
+> [!NOTE]  
+> Microsoft återkallar bara serverlicensieringscertifikat när man åläggs av en behörig myndighet att göra detta.
