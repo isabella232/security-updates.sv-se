@@ -19,6 +19,7 @@
   "notification_subscribers": [
     "betafred@microsoftcom"
   ],
+  "sync_notification_subscribers": null,
   "branches_to_filter": [],
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
@@ -28,7 +29,7 @@
     {
       "path_to_root": "_themes",
       "url": "https://github.com/Microsoft/templates.docs.msft.sv-se",
-      "branch": "master",
+      "branch": "main",
       "branch_mapping": {}
     },
     {
@@ -37,7 +38,7 @@
       "branch": "live",
       "branch_mapping": {
         "live": "live",
-        "master": "master"
+        "main": "main"
       }
     }
   ],
